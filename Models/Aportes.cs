@@ -10,7 +10,8 @@ namespace AP1_P1_StevenJavier.Models
         [Required(ErrorMessage = "Favor de Ingresar la Fecha.")]
         public DateTime Fecha { get; set; }
 
-        public string? Persona { get; set; }
+        [Required]
+        public string Persona { get; set; }
 
         [Required(ErrorMessage = "La observacion es requerida")]
         public string? Observacion { get; set; }
