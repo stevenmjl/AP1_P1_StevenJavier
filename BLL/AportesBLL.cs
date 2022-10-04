@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using AP1_P1_StevenJavier.DAL;
 using AP1_P1_StevenJavier.Models;
+using System.Linq.Expressions;
 
 namespace AP1_P1_StevenJavier.BLL
 {
@@ -50,6 +51,20 @@ namespace AP1_P1_StevenJavier.BLL
                     .Where(o => o.Persona == persona)
                     .AsNoTracking()
                     .SingleOrDefault();
+        }
+        public Aportes BuscarFecha(DateTime fecha)
+        {
+            return _contexto.Aportes
+                    .Where(o => o.Fecha == fecha)
+                    .AsNoTracking()
+                    .SingleOrDefault();
+        }
+        public List<Aportes> GetList(Expression<Func<Aportes, bool>> Criterio)
+        {
+            return _contexto.Aportes
+                .AsNoTracking()
+                .Where(Criterio)
+                .ToList();
         }
     }
 }

@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.EntityFrameworkCore;
-using AP1_P1_StevenJavier.Data;
 using AP1_P1_StevenJavier.DAL;
 using AP1_P1_StevenJavier.BLL;
 
@@ -10,7 +9,6 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
-builder.Services.AddSingleton<WeatherForecastService>();
 
 var ConStr = builder.Configuration.GetConnectionString("ConStr");
 
