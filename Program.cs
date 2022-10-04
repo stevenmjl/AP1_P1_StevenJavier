@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
+using Microsoft.EntityFrameworkCore;
 using AP1_P1_StevenJavier.Data;
+using AP1_P1_StevenJavier.DAL;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +10,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddSingleton<WeatherForecastService>();
+
+var ConStr = builder.Configuration.GetConnectionString("ConStr");
+
+builder.Services.AddDbContext<Contexto>(options =>
+    options.UseSqlite(ConStr)
+) ;
 
 var app = builder.Build();
 
